@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user';
+import {UserService} from '../../services/user/user.service';
 
 
 @Component({
@@ -9,11 +10,18 @@ import {User} from '../../models/user';
 })
 export class LoginComponent implements OnInit {
   model: User;
+  users: User[] = [];
+  isValid: boolean;
+
+  constructor(private userService: UserService) {}
+
   ngOnInit() {
     this.model = new User('', '');
+    this.userService.getUsers().subscribe(users => this.users = users);
   }
+
   onSubmit(): void {
-    // try authentication
+     this.userService.isValid(this.model).subscribe(res =>  this.isValid = res);
   }
 
 }
