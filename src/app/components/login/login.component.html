@@ -17,4 +17,6 @@
      <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Submit</button>
   </div>
 
+  <div [hidden] ="!isValid" class="row alert alert-info">Congratulation, Valid Credentials</div>
+  <div [hidden] ="isValid || isValid === undefined" class="row alert alert-danger">inValid Credentials! Try again</div>
 </form>
