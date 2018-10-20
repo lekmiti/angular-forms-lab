@@ -11,7 +11,7 @@ import {UserService} from '../../services/user/user.service';
 export class LoginComponent implements OnInit {
   model: User;
   users: User[] = [];
-  isValid: boolean;
+  isValid: Boolean;
 
   constructor(private userService: UserService) {}
 
@@ -22,6 +22,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
      this.userService.isValid(this.model).subscribe(res =>  this.isValid = res);
-  }
+   }
 
 }
